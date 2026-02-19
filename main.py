@@ -13,6 +13,12 @@ bot = commands.Bot(command_prefix= "!", intents=intents)
 async def on_ready():
     print(f"{bot.user.name} is ready")
 
+@bot.event
+async def on_member_join(member):
+    # Karşılama mesajı gönderme
+    for channel in member.guild.text_channels:
+        await channel.send(f’ Hoş geldiniz: , {member.mention}!')
+
 @bot.command()
 async def hello(ctx):
     await ctx.send("hi")
